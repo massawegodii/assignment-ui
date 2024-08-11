@@ -1,13 +1,12 @@
 import "./App.css";
-import { useLocalState } from "./utils/useLocalStorage";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import HomePage from "./HomePage";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
+import AssignmentView from "./AssignmentView";
 
-function App() {
-  const [jwt, setJwt] = useLocalState("", "jwt");
+function App() {  
 
   return (
     <Routes>
@@ -16,6 +15,14 @@ function App() {
         element={
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/assignments/:id"
+        element={
+          <PrivateRoute>
+            <AssignmentView />
           </PrivateRoute>
         }
       />
